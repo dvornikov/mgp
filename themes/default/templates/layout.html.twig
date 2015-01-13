@@ -1,0 +1,53 @@
+<!doctype html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ru" lang="ru">
+<head>
+    <title>{% block title %}Пример для MGP{% endblock %}</title>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="http://bootswatch.com/superhero/bootstrap.min.css">
+    <style>
+    @import url(http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,300,600,700);
+    body {
+        font-family: 'Open Sans', sans-serif !important;
+    }
+    .main {
+        padding: 15px;
+    }
+    </style>
+</head>
+<body>
+    <div class="container main">
+        <div class="row">
+            {% block sidebar %}
+                {% if user %}
+                <div class="col-md-3">
+                    <div class="panel panel-info">
+                        <div class="panel-heading">
+                            <h3 class="panel-title"><a href="/index.php?action=account">{{ user.name }}</a></h3>
+                        </div>
+                        <div class="panel-body text-center">
+                            <p><a href="/index.php?action=account"><img alt="User Pic" src="https://lh5.googleusercontent.com/-b0-k99FZlyE/AAAAAAAAAAI/AAAAAAAAAAA/eu7opA4byxI/photo.jpg?sz=100" class="img-circle"></a></p>
+
+                            <a href="/index.php?action=logout" class="btn btn-default btn-lg btn-block">Выйти</a>
+                        </div>
+                    </div>
+
+                    <div class="panel panel-info">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">Пользователи</h3>
+                        </div>
+                        <div class="panel-body">
+                            <ul>
+                                {% for user in users %}
+                                    <li><a href="/index.php?action=chat&amp;user={{ user.id }}">{{ user.name }}</a></li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+            {% endblock %}
+            {% block body %}{% endblock %}
+        </div>
+    </div>
+</body>
+</html>
