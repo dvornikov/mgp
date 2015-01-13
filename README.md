@@ -1,10 +1,11 @@
 ## Задание 1:
-SELECT DepartmentName, COUNT(\*)
+```mysql
+SELECT DepartmentName, COUNT(*)
 FROM employee,department
 WHERE employee.DepartmentID = department.DepartmentID
 GROUP BY DepartmentName
-**HAVING** COUNT(\*)>1 -- Исправление
-
+HAVING COUNT(*)>1 -- Исправление
+```
 ## Задание 3 (А и Б объединены в коде)
 dump.sql — тестовые данные и схема базы.
 
